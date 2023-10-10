@@ -30,3 +30,11 @@ class RecipeModelTest(TestCase):
         recipe_ingredients = recipe.ingredients
         self.assertEqual(recipe_ingredients,
                          'Shrimp, cheese, ketchup, worcestershire')
+
+    def test_difficulty_calculation(self):
+        recipe = Recipe.objects.get(id=1)
+        self.assertEqual(recipe.calc_difficulty(), 'Hard')
+
+    def test_get_absolute_url(self):
+        recipe = Recipe.objects.get(id=1)
+        self.assertEqual(recipe.get_absolute_url(), '/recipes/list/1')
